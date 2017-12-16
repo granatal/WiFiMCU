@@ -53,6 +53,8 @@
  ******************************************************/
 
 void MicoNanosendDelay( uint64_t delayus );
+void StartMicoNanosecondTime(void);
+uint64_t GetMicoNanosecondTime(void);
 
 #endif
 

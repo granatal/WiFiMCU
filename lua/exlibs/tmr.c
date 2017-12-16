@@ -35,6 +35,22 @@ static int ltmr_tick( lua_State* L )
   lua_pushinteger( L, tick );
   return 1; 
 }
+
+//tmr.startMicroTimer()
+static int ltmr_startMicroTimer( lua_State* L )
+{
+  StartMicoNanosecondTime();
+  return 0; 
+}
+
+//tmr.stopMicroTimer()
+static int ltmr_stopMicroTimer( lua_State* L )
+{
+  uint32_t time = GetMicoNanosecondTime()/1000;
+  lua_pushinteger( L, time);
+  return 1; 
+}
+
 //tmr.stop(id)
 //id:0~15
 static int ltmr_stop( lua_State* L )
@@ -143,6 +159,8 @@ static int ltmr_start( lua_State* L )
 const LUA_REG_TYPE tmr_map[] =
 {
   { LSTRKEY( "tick" ), LFUNCVAL( ltmr_tick ) },
+  { LSTRKEY( "startMicroTimer" ), LFUNCVAL( ltmr_startMicroTimer ) },
+  { LSTRKEY( "stopMicroTimer" ), LFUNCVAL( ltmr_stopMicroTimer ) },
   { LSTRKEY( "delayms" ), LFUNCVAL( ltmr_delayms ) },
   { LSTRKEY( "delayus" ), LFUNCVAL( ltmr_delayus ) },
   { LSTRKEY( "start" ), LFUNCVAL( ltmr_start ) },

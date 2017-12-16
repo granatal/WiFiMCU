@@ -602,6 +602,15 @@ void MicoNanosendDelay( uint64_t delayns )
   platform_nanosecond_delay( delayns );
 }
 
+void StartMicoNanosecondTime(void)
+{
+  platform_init_nanosecond_clock();
+}
+
+uint64_t GetMicoNanosecondTime(void) {
+  return platform_get_nanosecond_clock_value();
+}
+
 char *mico_get_bootloader_ver(void)
 {
     static char ver[33];
